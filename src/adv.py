@@ -54,29 +54,14 @@ player = Player('joel', room['outside'])
 # If the user enters "q", quit the game.
 
 
-# def check_room(current_room, dir):
-#     dir += '_to'
-#     print(room[current_room].n_to)
-#     if getattr(room[current_room][dir]):
-#         return room[current_room][dir]
-#         # print()
-# else:
-#         print('There is no room that direction, please try again')
-
-
 def adventure_game():
-    # player_name = input('Enter a player name:')
     direction = ''
-    # player = Player(player_name)
     while(direction != 'q'):
         print(player.current_room.name)
         print(player.current_room.description)
         direction = input(
             'What direction would you like to walk? [w]est [e]ast [s]outh [n]orth:   ')
-        if direction in player.current_room.check_directions():
-            player.change_room(getattr(player.current_room, f'{direction}_to'))
-        else:
-            print('There is no room that direction, please try again')
+        player.move(direction)
 
 
 adventure_game()
