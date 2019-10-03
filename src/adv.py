@@ -52,14 +52,34 @@ player = Player('joel', room['outside'])
 # If the user enters "q", quit the game.
 
 
+def player_action(instructions):
+    action = instructions.split()
+    if (len(action) == 1):
+        if hasattr(player.current_room, f"{instructions}_to"):
+            player.move(instructions)
+        else:
+            print('There is no room that direction, please try again')
+    elif (len(action) == 2):
+        if (action[0] == 'get' or action[0] == 'take'):
+            items = player.current_room.items
+            for item in items:
+
+
 def adventure_game():
     direction = ''
     while(direction != 'q'):
         print(player.current_room.name)
         print(player.current_room.description)
+        for index, int in enumerate(player.current_room.items):
+            print(f'item #: {index} item: {int}', end=' ')
+        # print(f'Items in the current room: {for item in player.current_room.items}')
         direction = input(
             'What direction would you like to walk? [w]est [e]ast [s]outh [n]orth:   ')
-        player.move(direction)
+        player_action(direction)
+        # if hasattr(player.current_room, f"{direction}_to"):
+        #     player.move(direction)
+        # else:
+        #     print('There is no room that direction, please try again')
 
 
 adventure_game()
