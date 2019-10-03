@@ -62,7 +62,12 @@ def player_action(instructions):
     elif (len(action) == 2):
         if (action[0] == 'get' or action[0] == 'take'):
             items = player.current_room.items
-            for item in items:
+            for index, item in enumerate(items):
+                if (item.name == action[1]):
+                    item = player.current_room.items.pop(index)
+                    player.items.append(item)
+                else:
+                    print('Item does not exist in this room')
 
 
 def adventure_game():
@@ -82,4 +87,4 @@ def adventure_game():
         #     print('There is no room that direction, please try again')
 
 
-adventure_game()
+# adventure_game()
