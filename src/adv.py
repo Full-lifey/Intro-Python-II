@@ -1,5 +1,3 @@
-import sys
-
 from room import Room
 from player import Player
 

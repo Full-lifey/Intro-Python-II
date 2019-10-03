@@ -3,9 +3,10 @@
 
 
 class Player:
-    def __init__(self, name, current_room='outside'):
+    def __init__(self, name, current_room='outside', items=[]):
         self.name = name
         self.current_room = current_room
+        self.items = items
 
     def __str__(self):
         return f'Player {self.name} is in room {self.current_room}'
