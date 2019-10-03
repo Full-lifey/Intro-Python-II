@@ -13,3 +13,10 @@ class Player:
 
     def move(self, direction):
         self.current_room = getattr(self.current_room, f'{direction}_to')
+
+    def view_inventory(self):
+        if len(self.items) == 0:
+            print('You have no items in your inventory')
+        else:
+            for item in self.items:
+                print(item)
